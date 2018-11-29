@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
+const db = require('/models')
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.json())
@@ -16,7 +17,7 @@ app.get('/', (req, res) => {
 });
 
 // SERVER START
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
 console.log(`HTTP server listening at localhost:3000`);
 });
 
