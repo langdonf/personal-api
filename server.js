@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-const db = require('/models')
+const db = require('./models')
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.json())
