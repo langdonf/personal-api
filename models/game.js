@@ -9,12 +9,12 @@ var GameSchema = new Schema({
   type: String,
   hoursPlayed: Number,
   stillPlaying: Boolean,
-  mainCharacter:{
-    name: String,
-    image: String
-  }
+  character: {
+    type: Schema.Types.ObjectId,
+    ref: 'Character'
+  },
 });
 
 
-var Game= mongoose.model('Game', GameSchema);
+var Game = mongoose.model('Game', GameSchema);
 module.exports = Game;

@@ -1,8 +1,18 @@
-*{
+body{
   background-color: darkolivegreen
 }
 
 h2{
   color: midnightblue
 }
+img{
+  width: 100%;
+}
+.card{
+  margin: 20px;
+}
 
+#gameTarget{
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -7,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="../public/styles/main.css" /> -->
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <script src="scripts/app.js"></script>
+  <script src="/scripts/app.js"></script>
  
 </head>
 <body>
@@ -18,7 +19,7 @@
 		<div class="container-fluid">
       <h1 class="text-center">Langdons Most Recent Video Games</h1>
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
           <form class="form-inline" id="newGameForm">
             <div class="form-group">
               <label for="title">Title</label>
@@ -26,18 +27,27 @@
             </div>
             <div class="form-group">
               <label for="title">Game Type</label>
-              <input type="text" class="form-control" name="gameType" placeholder="Type of Game">
+              <input type="text" class="form-control" name="type" placeholder="Type of Game">
             </div>
             <div class="form-group">
               <label for="title">Developer</label>
               <input type="text" class="form-control" name="developer" placeholder="Developer Name">
             </div>
+            <div class="form-group">
+              <label for="title">Hours Played</label>
+              <input type="text" class="form-control" name="hoursPlayed" placeholder="Hours Played">
+            </div>
+            <div class="form-group">
+                <label for="title">Image URL</label>
+                <input type="text" class="form-control" name="image" placeholder="Image URL">
+            </div>
             <button type="submit" class="btn btn-default">Add Game</button>
           </form>
-          <div id='gameTarget'>
-          </div>
         </div>
       </div>
+    </div>
+    <div id='gameTarget' class="card-deck container-fluid">
+              
     </div>
 
 	</section>

@@ -8,7 +8,6 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static(__dirname + '/public'));
 
-
 /*
  * HTML Endpoints
  */
@@ -52,16 +51,64 @@ app.get('/api/profile', (req, res) => {
 
 app.get('/api/games', (req, res) => {
   db.Game.find()
+    .populate('character')
     .exec(function(err, games){
     if (err) {
       console.log("index error: " + err);
       res.sendStatus(500);
     } else{
-    
     res.json(games);
   }});
 })
 
+app.get('/api/games/:id', (req, res) =>{
+  db.Game.findById(req.params.id)
+  .exec(function(err, game){
+    if(err){
+      console.log("index error: " + err);
+      res.sendStatus(500);
+    }
+    console.log(game);
+    res.json(game)
+  })
+})
+
+app.post('/api/games', (req, res)=>{
+  var newGame = new db.Game({
+    title: req.body.title,
+    developer: req.body.developer,
+    type: req.body.type,
+    hoursPlayed: req.body.hoursPlayed,
+    image: req.body.image
+  });
+  newGame.save(function(err, game){
+    if (err) {
+      console.log("create error: " + err);
+    }
+    console.log("created ", game.title);
+  });
+})
+
+app.put('/api/games/:id', (req,res)=>{
+  // grab the param and save it to a variable
+  let gameId = req.params.id
+  let updateBody = req.body;
+  // with that given index access the todo and update it with the given information from req.body
+  db.Game.findOneAndUpdate({ _id: gameId }, updateBody, {new:true}) 
+    .exec(function(err, updatedGame){ 
+      if(err) { return console.log(err) }
+    res.json(updatedGame);
+    })
+})
+
+app.delete('/api/games/:id', (req, res) =>{
+  let gameId = req.params.id;
+  db.Game.findOneAndDelete({ _id: gameId }, 
+    function(err, deletedGame){
+        if(err) { return console.log(err) }
+        res.json(deletedGame);
+  }
+)})
 
 // SERVER START
 app.listen(process.env.PORT || 3000, () => {

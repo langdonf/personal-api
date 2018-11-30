@@ -4,63 +4,75 @@ var games_list = [
   {
     title: "Fortnite",
     developer: "Epic Games",
-    image: "public/images/fortnite.png",
+    image: "/images/fortnite.png",
     type: "Battle Royal",
-    hoursPlayed: 640,
+    hoursPlayed: 240,
     stillPlaying: true,
-    mainCharacter:{
-      name: "Jonesy",
-      image: "public/images/jonsey.png"
-    }
   },
   {
     title: "Overwatch",
     developer: "Blizzard",
-    image: "public/images/overwatch.png",
+    image: "/images/overwatch.png",
     type: "Online Multiplayer FPS",
-    hoursPlayed: 430,
+    hoursPlayed: 230,
     stillPlaying: true,
-    mainCharacter:{
-      name: "Tracer",
-      image: "public/images/tracer.png"
-    }
   },
   {
-    title: "BattleField V",
+    title: "Battlefield V",
     developer: "EA Games",
-    image: "public/images/bf5.png",
+    image: "/images/bf5.png",
     type: "Online Multiplayer FPS",
     hoursPlayed: 20,
     stillPlaying: true,
-    mainCharacter:{
-      name: "Battlefield Girl",
-      image: "public/images/bf5girl.png"
-    } 
   },
   {
     title: "Spiderman",
     developer: "Insomniac Games",
-    image: "public/images/spidermanps4.png",
+    image: "/images/spidermanps4.png",
     type: "Action Adventure",
     hoursPlayed: 45,
     stillPlaying: false,
-    mainCharacter:{
-      name: "Spiderman",
-      image: "public/images/spiderman.png"
-    } 
   }
 ]
-
-db.Game.deleteMany({}, function(err, games){
-  console.log('removed all games');
-  db.Game.create(games_list, function(err, games){
-    if (err){
+/* var characters_list = [
+  {
+    name: "Spiderman",
+    image: "public/images/spiderman.png"
+  },
+  {
+    name: "Battlefield Girl",
+    image: "public/images/bf5girl.png"
+  },
+  {
+    name: "Tracer",
+    image: "public/images/tracer.png"
+  },
+  {
+    name: "Jonesy",
+    image: "public/images/jonsey.png"
+  }
+] */
+/* db.Character.deleteMany({}, function(err, characters){
+  db.Character.create(characters_list, function(err, characters){
+    if(err){
       console.log(err);
       return
     }
-    console.log('recreated all games');
-    console.log("created", games.length, "games");
+    console.log('recreated all characters');
+    console.log("created", characters.length, "characters"); */
+    
+    db.Game.deleteMany({}, function(err, games){
+      console.log('removed all games');
+      db.Game.create(games_list, function(err, games){
+        if (err){
+          console.log(err);
+          return
+        }
+        console.log('recreated all games');
+        console.log("created", games.length, "games");
 
 
-  });
-});
+      });
+    })
+/*   })
+}) */
